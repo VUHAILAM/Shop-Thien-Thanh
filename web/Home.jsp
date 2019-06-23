@@ -113,7 +113,7 @@
                         Hỗ trợ trực tuyến
                     </div>
                     <div id="yahooAndSkype"> 
-                        <img src="Images/yahoo.png" title="Yahoo"> <br>
+                        <img src="Images/Yahoo.png" title="Yahoo"> <br>
                         <img src="Images/Skype.png" title="Skype"> <br>
                         Hot line: <span>0914 024 357</span>
                     </div>

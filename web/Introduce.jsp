@@ -113,7 +113,7 @@
                         Hỗ trợ trực tuyến
                     </div>
                     <div id="yahooAndSkype">
-                        <img src="Images/yahoo.png" title="Yahoo"> <br>
+                        <img src="Images/Yahoo.png" title="Yahoo"> <br>
                         <img src="Images/Skype.png" title="Skype"> <br>
                         Hot line: <span>0914 024 357</span>
                     </div>
@@ -154,7 +154,7 @@
                             Chúng tôi sẽ giao hàng tận nơi trong thời gian nhanh nhất!
                             Hãy đến với Shop thời trang <b>Thiên Thanh</b> để chọn cho mình những bộ trang phục duyên dáng và hợp với mình nhất nha bạn!
                         </p>
-                        Liên hệ trực tiếp: <a href="http://t3h.vn">Shop Thời Trang Thiên Thanh</a>
+                        Liên hệ trực tiếp: <a href="#">Shop Thời Trang Thiên Thanh</a>
                         <p>
                             Địa chỉ: 357 Lê Hồng Phong, Q.10, TP.HCM <br />
                             Holine: 0914 024 357
