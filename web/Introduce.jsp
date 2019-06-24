@@ -24,15 +24,17 @@
                         <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                     </h1>
                 </div>
-                <!--<div id="login">
-                    <form name="frmTim" action="" method="get">
+                 <div id="login">
+                    <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
                         <input id="password" type="password" name="pass" placeholder="Password" required>
                         <button class="button" onclick="getInfo()">LOGIN</button>
                         <button class="button" onclick="signUp()">SIGN UP</button>
-                    </form>
-                </div>-->
-            </div>
+                     </form>-->
+                    <a style ="font-size: 18px;" href="Login.jsp">Login  |</a>
+                    
+                    <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
+                </div>
         </header>
         <!--end header-->
         <!--menuContainer-->
@@ -70,12 +72,12 @@
                         </ul>
                     </li>
                     <li><a href="#">Tin tức sự kiện</a></li>
-                    <!--<li style="width:auto; border:none">
+                    <li style="width:auto; border:none">
                         <form name="frmTim" action="" method="get">
-                            <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" required>
+                            <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" style = "width: 100px;" required>
                             <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="search()">
                         </form>
-                    </li>-->
+                    </li>
                 </ul>
             </nav>
         </section>

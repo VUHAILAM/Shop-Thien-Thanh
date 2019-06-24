@@ -133,80 +133,28 @@
         <!-- start content -->
         <section id="formbox">
             <div>
-                <h1 style="color:#8c0209; border-bottom: #999 1px dashed;">Đăng ký thành viên mới</h1>
+                <h1 style="color:#8c0209; border-bottom: #999 1px dashed;">Đăng nhập</h1>
             </div>
             <div id="box">
                 <form>
                     <table>
                         <tr>
                             <td>Tên đăng nhập: </td>
-                            <td><input id="account" type="text" name="account" onkeyup="check()" /></td>
+                            <td><input id="account" type="text" name="account" required /></td>
                             <td>
                                 <div id="z-acc"></div>
                             </td>
                         </tr>
                         <tr>
                             <td>Mật khẩu: </td>
-                            <td><input id="mk" type="password" name="mk" onkeyup="check()"/></td>
+                            <td><input id="mk" type="password" name="mk" required/></td>
                             <td>
                                 <div id="z-mk"></div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nhập lại mật khẩu: </td>
-                            <td><input id="mk1" type="password" name="mk1" onkeyup="check()" /></td>
-                            <td>
-                                <div id="z-mk1"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Họ và tên: </td>
-                            <td><input id="fullname" type="text" name="fullname" onkeyup="check()"/></td>
-                            <td>
-                                <div id="z-name"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Giới tính: </td>
-                            <td><input type="checkbox" name="Nam"/>Nam</td>
-                            <td><input type="checkbox" name="Nu"/>Nữ</td>
-                        </tr>
-                        <tr>
-                            <td>Ngày sinh: </td>
-                            <td><input id="DOB" type="date" name="DOB" onkeyup="check()" /></td>
-                            <td>
-                                <div id="z-DOB"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Nghề nghiệp: </td>
-                            <td><select id="JOB">
-                                    <option value="Giáo viên">Giáo viên</option>
-                                    <option value="Kỹ sư">Kỹ sư</option>
-                                    <option value="Doanh nhân">Doanh nhân</option>
-                                    <option value="Luật sư">Luật sư</option>
-                                </select></td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td><input id="email" type="email" onkeyup="check()"/></td>
-                            <td>
-                                <div id="z-email"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Điện thoại</td>
-                            <td><input id="phone" type="number" onkeyup="check()"/></td>
-                            <td>
-                                <div id="z-phone"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Ghi chú</td>
-                            <td><textarea cols="30" rows="10" id="note"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center"><button type="button" onclick="return XacNhan()">Chấp nhận</button></td>
+                            <td></td>
+                            <td><button>Đăng nhập</button></td>
                         </tr>
                     </table>
                 </form>
