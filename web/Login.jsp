@@ -43,7 +43,7 @@
     <section id="menuContainer">
         <nav id="menu" class="radius">
             <ul>
-                <li><a href="TrangChu.html">Trang chủ</a></li>
+                <li><a href="Home.jsp">Trang chủ</a></li>
                 <li>
                     <a href="#">Quần áo nữ</a>
                     <ul class="sub-menu">
