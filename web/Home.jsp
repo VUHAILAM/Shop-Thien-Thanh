@@ -24,6 +24,7 @@
                         <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                     </h1>
                 </div>
+                <% if (session.getAttribute("admin") == null) { %>
                 <div id="login">
                     <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
@@ -32,9 +33,10 @@
                         <button class="button" onclick="signUp()">SIGN UP</button>
                      </form>-->
                     <a style ="font-size: 18px;" href="Login.jsp">Login  |</a>
-                    
+
                     <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
                 </div>
+                <% }%>
             </div>
         </header>
         <!--end header-->
@@ -183,6 +185,6 @@
                 <a href="https://www.youtube.com" target="_blank"><img src="Images/youtube.png"></a>
             </div>
         </div>
-                    <!--end footer-->
+        <!--end footer-->
     </body>
 </html>

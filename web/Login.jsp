@@ -25,6 +25,7 @@
                     <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                 </h1>
             </div>
+            <% if (session.getAttribute("admin") == null) { %>
              <div id="login">
                     <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
@@ -36,6 +37,7 @@
                     
                     <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
                 </div>
+             <% } %>
         </div>
     </header>
     <!--end header-->
@@ -135,8 +137,13 @@
             <div>
                 <h1 style="color:#8c0209; border-bottom: #999 1px dashed;">Đăng nhập</h1>
             </div>
+            <% if (request.getAttribute("error") != null) {%>
+                <H2 style="color: red"> 
+                    <%= request.getAttribute("error")%>    
+                </H2>
+                <% }%>
             <div id="box">
-                <form>
+                <form action="LoginServlet" method="post">
                     <table>
                         <tr>
                             <td>Tên đăng nhập: </td>
@@ -154,7 +161,7 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button>Đăng nhập</button></td>
+                            <td><input type="submit" value="Login"/></td>
                         </tr>
                     </table>
                 </form>

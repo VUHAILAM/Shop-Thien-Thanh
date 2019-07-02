@@ -24,7 +24,8 @@
                         <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                     </h1>
                 </div>
-                 <div id="login">
+                <% if (session.getAttribute("admin") == null) { %>
+                <div id="login">
                     <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
                         <input id="password" type="password" name="pass" placeholder="Password" required>
@@ -32,9 +33,10 @@
                         <button class="button" onclick="signUp()">SIGN UP</button>
                      </form>-->
                     <a style ="font-size: 18px;" href="Login.jsp">Login  |</a>
-                    
+
                     <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
                 </div>
+                <% }%>
         </header>
         <!--end header-->
         <!--menuContainer-->
