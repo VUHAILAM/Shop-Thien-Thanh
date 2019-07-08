@@ -6,7 +6,7 @@ go
 create table Customers
 (
      account varchar(30) primary key,
-	 pass   varchar(30) 
+	 pass   varchar(30), 
      fullname nvarchar(30),
      email varchar(30),
      phone varchar(11),
@@ -32,3 +32,5 @@ insert into Products values('5', 'Áo sơ mi hồng', 'MSM', 'Images/Nam_06.jpg'
 insert into Products values('6', 'Quần jean', 'MQ', 'Images/Nam_01.jpg', 300000)
 insert into Products values('7', 'Quần kaki', 'MQ', 'Images/Nam_07.jpg', 300000)
 insert into Products values('8', 'Quần cộc', 'MQ', 'Images/Nam_08.jpg', 100000)
+
+select * from Products

@@ -4,6 +4,10 @@
     Author     : ADMIN
 --%>
 
+<%@page import="entities.Product"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.DBProduct"%>
 <%@page import="entities.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -140,43 +144,36 @@
             <!-- end sidebar1 -->
             <!-- start content -->
             <section id="mainContent">
-                <div id="mainContent_1">
-                    <img src="Images/bg_banner.jpg">
-                    <div id="mainContent_1_title">
-                        &laquo;&laquo;&nbsp;&nbsp;Cửa hàng của chúng tôi&nbsp;&nbsp;&raquo;&raquo;
-                    </div>
-                </div> <!--mục 1 -->
-                <div id="mainContent_2"> <!—mục 2 -->
-                    <div id="mainContent_2_title" class="radius">
-                        &loz; Thời trang cực hot !!! 
-                    </div>
-                    <div id="mainContent_2_content">
-                        <img src="Images/Moi_03.jpg" height="160px" width="103.5">
-                        <img src="Images/Moi_04.jpg" height="160px" width="103.5">
-                        <img src="Images/Moi_05.jpg" height="160px" width="103.5">
-                        <img src="Images/Moi_06.jpg" height="160px" width="103.5">
-                        <img src="Images/Moi_07.jpg" height="160px" width="103.5">
-                        <img src="Images/Moi_10.jpg" height="160px" width="103.5">
-                        <img src="Images/Moi_09.jpg" height="160px" width="103.5">
-                    </div>
-                </div>
-                <div id="mainContent_3"> <!--mục 3 -->
-                    <h1>Chào mừng bạn đến với shop quần áo rẻ đẹp!</h1>
-                    <h3>Hãy thỏa sức shopping online cùng shop quần áo rẻ đẹp nhé </h3>
-                    <p id="mainContent_3_1">Để chuẩn bị cho một ngày mới năng 
-                        động và hiệu quả, bạn không thể lơ là trong việc chọn lựa cho mình một bộ cánh tươm tất và thật xinh xắn. Diện cho mình những bộ áo quần hợp thời 
-                        trang, vừa thanh lịch lại vừa rất trẻ trung, duyên dáng, sành điệu… đó chính là điều mà 
-                        <span>Shop Thiên Thanh</span> muốn giới thiệu với các bạn.
-                    </p>
-                    <p id="mainContent_3_2"><a href="Introduce.jsp">&laquo;&laquo;&nbsp;&nbsp;Xem chi tiết&nbsp;&nbsp;&raquo;&raquo;</a></p>
-                </div>
-                <div id="mainContent_4">
-                    <div id="mainContent_4_title" class="radius">
-                        &loz; Thời trang nam
-                    </div>
-                    <script src="Script/myScript.js" charset="UTF-8"></script>
-                    <div id="noichuaanh"></div>
-                </div>
+                <%
+                    DBProduct dbp = new DBProduct();
+                    ArrayList<Product> list = dbp.getAllProducts();
+                    Product p = new Product();
+                %>
+                <h1>The list of Products</h1>
+                <table width="100%">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>image</th>
+                            <th>Price</th>
+                        </tr>
+                        <%
+                            int i = 0;
+                            int n=list.size();
+                            while(i<n){
+                                p = list.get(i);
+                        %>
+                        <tr>
+                            <td><%=p.getId()%></td>
+                            <td><%=p.getName()%></td>
+                            <td><img class = "hinh" src=<%=p.getImage()%> /></td>
+                            <td><%=p.getPrice()%></td>
+                        </tr>
+                        <%
+                                i++;
+                            }
+                        %>
+                    </table>
             </section>
             <!-- end content -->
             <div style="clear: both;">&nbsp;</div>

@@ -52,4 +52,40 @@ public class DBCustomer {
         return null;
     }
     
+    
+    public boolean isExistedCus(String account) {
+        try {
+            String sql = "SELECT count(*) FROM Customers where username = ?";
+
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, account);
+            int count = st.executeUpdate();
+            return (count > 0);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public void insert(String username, String password,String fullname, 
+            String email, String phone, String job, String other) {
+        try {
+            String sql = "INSERT into dbo.Admin (account, pass, fullname,"
+                    + " email, phone, job, other) VALUES(?, ?, ?)";
+
+            PreparedStatement st = con.prepareStatement(sql);
+            st.setString(1, username);
+            st.setString(2, password);
+            st.setString(3, fullname);
+            st.setString(4, email);
+            st.setString(5, phone);
+            st.setString(6, job);
+            st.setString(7, other);
+            if (isExistedCus(username)) {
+                int flag = st.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

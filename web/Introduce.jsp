@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="entities.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,8 +25,8 @@
                         <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                     </h1>
                 </div>
-                <% if (session.getAttribute("admin") == null) { %>
-                <div id="login">
+                 <% if (session.getAttribute("admin") == null) { %>
+             <div id="login">
                     <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
                         <input id="password" type="password" name="pass" placeholder="Password" required>
@@ -33,10 +34,17 @@
                         <button class="button" onclick="signUp()">SIGN UP</button>
                      </form>-->
                     <a style ="font-size: 18px;" href="Login.jsp">Login  |</a>
-
+                    
                     <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
                 </div>
-                <% }%>
+             <% } else {
+                Customer a = (Customer) session.getAttribute("admin");
+            %>
+            <div id ="login"> <a href="LogoutServlet">Log out</a></div>
+           
+        
+            
+        <%}%>
         </header>
         <!--end header-->
         <!--menuContainer-->
@@ -77,7 +85,7 @@
                     <li style="width:auto; border:none">
                         <form name="frmTim" action="" method="get">
                             <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" style = "width: 100px;" required>
-                            <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="search()">
+                            <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="window.location.href='ShowProducts.jsp'" >
                         </form>
                     </li>
                 </ul>
@@ -249,7 +257,7 @@
             </div>
             <div id="footer_icon">
                 <a href="https://www.facebook.com" target="_blank"><img src="Images/facebook.png"></a>
-                <a href="https://www.youtube.com" target="_blank"><img src="Images/youtube.png"></a>
+                <a href="https://www.youtube.com" target="_blank"><img src="Images/youTube.png"></a>
             </div>
         </div>
         <!--end footer-->

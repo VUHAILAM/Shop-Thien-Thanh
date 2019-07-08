@@ -19,7 +19,7 @@ public class DBContext {
    
     /*Change/update information of your database connection, DO NOT change name of instance variables in this class*/
     private final String serverName = "DESKTOP-1P4GME6\\SQLEXPRESS03";
-    private final String dbName ="Trading2019";
+    private final String dbName ="Assignment";
     private final String portNumber = "1433";
     private final String userID = "sa";
     private final String password = "123";

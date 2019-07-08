@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="entities.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +38,14 @@
                     
                     <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
                 </div>
-             <% } %>
+             <% } else {
+                Customer a = (Customer) session.getAttribute("admin");
+            %>
+            <div id ="login"> <a href="LogoutServlet">Log out</a></div>
+           
+        
+            
+        <%}%>
         </div>
     </header>
     <!--end header-->
@@ -79,7 +87,7 @@
                 <li style="width:auto; border:none">
                     <form name="frmTim" action="" method="get">
                         <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" style = "width: 100px;" required>
-                        <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="search()">
+                        <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="window.location.href='ShowProducts.jsp'" >
                     </form>
                 </li>
             </ul>
@@ -232,7 +240,7 @@
         </div>
         <div id="footer_icon">
             <a href="https://www.facebook.com" target="_blank"><img src="Images/facebook.png"></a>
-            <a href="https://www.youtube.com" target="_blank"><img src="Images/youtube.png"></a>
+            <a href="https://www.youtube.com" target="_blank"><img src="Images/youTube.png"></a>
         </div>
     </div>
     <!--end footer-->

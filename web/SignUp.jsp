@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="entities.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,8 +26,8 @@
                         <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                     </h1>
                 </div>
-                <% if (session.getAttribute("admin") == null) { %>
-                <div id="login">
+                 <% if (session.getAttribute("admin") == null) { %>
+             <div id="login">
                     <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
                         <input id="password" type="password" name="pass" placeholder="Password" required>
@@ -34,10 +35,17 @@
                         <button class="button" onclick="signUp()">SIGN UP</button>
                      </form>-->
                     <a style ="font-size: 18px;" href="Login.jsp">Login  |</a>
-
+                    
                     <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
                 </div>
-                <% }%>
+             <% } else {
+                Customer a = (Customer) session.getAttribute("admin");
+            %>
+            <div id ="login"> <a href="LogoutServlet">Log out</a></div>
+           
+        
+            
+        <%}%>
             </div>
         </header>
         <!--end header-->
@@ -79,7 +87,7 @@
                     <li style="width:auto; border:none">
                         <form name="frmTim" action="" method="get">
                             <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" style = "width: 100px;" required>
-                            <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="search()">
+                            <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="window.location.href='ShowProducts.jsp'" >
                         </form>
                     </li>
                 </ul>
@@ -138,7 +146,7 @@
                     <h1 style="color:#8c0209; border-bottom: #999 1px dashed;">Đăng ký thành viên mới</h1>
                 </div>
                 <div id="box">
-                    <form>
+                    <form action="SignUpServlet" method="post">
                         <table>
                             <tr>
                                 <td>Tên đăng nhập: </td>
@@ -182,30 +190,25 @@
                             </tr>
                             <tr>
                                 <td>Nghề nghiệp: </td>
-                                <td><select id="JOB">
-                                        <option value="Giáo viên">Giáo viên</option>
-                                        <option value="Kỹ sư">Kỹ sư</option>
-                                        <option value="Doanh nhân">Doanh nhân</option>
-                                        <option value="Luật sư">Luật sư</option>
-                                    </select></td>
+                                <td><input id="job" type="text" name="job"/></td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td><input id="email" type="email" onkeyup="check()"/></td>
+                                <td><input id="email" type="email" name ="email" onkeyup="check()"/></td>
                                 <td>
                                     <div id="z-email"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Điện thoại</td>
-                                <td><input id="phone" type="number" onkeyup="check()"/></td>
+                                <td><input id="phone" type="number" name ="phone" onkeyup="check()"/></td>
                                 <td>
                                     <div id="z-phone"></div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Ghi chú</td>
-                                <td><textarea cols="30" rows="10" id="note"></textarea></td>
+                                <td><textarea cols="30" rows="10" id="note"name="other"></textarea></td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center"><button type="button" onclick="return XacNhan()">Chấp nhận</button></td>
@@ -279,7 +282,7 @@
             </div>
             <div id="footer_icon">
                 <a href="https://www.facebook.com" target="_blank"><img src="Images/facebook.png"></a>
-                <a href="https://www.youtube.com" target="_blank"><img src="Images/youtube.png"></a>
+                <a href="https://www.youtube.com" target="_blank"><img src="Images/youTube.png"></a>
             </div>
         </div>
         <!--end footer-->
