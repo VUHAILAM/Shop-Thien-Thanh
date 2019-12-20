@@ -82,11 +82,11 @@ public class LoginServlet extends HttpServlet {
         Customer a = adb.getCustomer(username, password);
 
         if (a == null) {
-            request.setAttribute("error", username + " is invalid, Please try agian!");
+            request.setAttribute("error", username + " is invalid, Please try again!");
             RequestDispatcher dis = request.getRequestDispatcher("Login.jsp");
             dis.forward(request, response);
         } else {
-            session.setAttribute("admin", a);
+            session.setAttribute("cus", a);
             response.sendRedirect("Home.jsp");
         }
     }

@@ -17,7 +17,7 @@ import model.DBProduct;
 public class NewClass {
     public static void main(String[] args) throws SQLException {
         DBProduct dbp = new DBProduct();
-        ArrayList<Product> list = dbp.getAllProducts();
+        ArrayList<Product> list = dbp.getProductsByCate("MSM");
         for(Product i : list) {
             System.out.println(i.getName());
         }

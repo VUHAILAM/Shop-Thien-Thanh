@@ -7,6 +7,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,15 +34,31 @@ public class SignUpServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-          String acc = request.getParameter("account");
-          String pass = request.getParameter("mk1");
-          String name = request.getParameter("fullname");
-          String email = request.getParameter("email");
-          String phone = request.getParameter("phone");
-          String job = request.getParameter("job");
-          String other = request.getParameter("other");
-          DBCustomer dbc = new DBCustomer();
+           DBCustomer dbc = new DBCustomer();
+           
+          String acc = request.getParameter("account").trim();
+          if(dbc.isExistedCus(acc)) {
+            request.setAttribute("error1", acc + " is dulicapted, Please try agian!");
+            RequestDispatcher dis = request.getRequestDispatcher("SignUp.jsp");
+            dis.forward(request, response);
+            return;
+           }
+          String pass = request.getParameter("mk").trim();
+          String pass1 = request.getParameter("mk1").trim();
+          if(!pass.equals(pass1)) {
+            request.setAttribute("error2", "password 2 incorrect, Please try agian!");
+            RequestDispatcher dis = request.getRequestDispatcher("SignUp.jsp");
+            dis.forward(request, response);
+            return;
+          }
+          String name = request.getParameter("fullname").trim();
+          String email = request.getParameter("email").trim();
+          String phone = request.getParameter("phone").trim();
+          String job = request.getParameter("job").trim();
+          String other = request.getParameter("other").trim();
+          
           dbc.insert(acc, pass, name, email, phone, job, other);
+          response.sendRedirect("Login.jsp");
         }
     }
 

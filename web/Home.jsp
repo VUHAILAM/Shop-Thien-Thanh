@@ -4,6 +4,10 @@
     Author     : ADMIN
 --%>
 
+<%@page import="java.util.Random"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="entities.Product"%>
+<%@page import="model.DBProduct"%>
 <%@page import="entities.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +29,7 @@
                         <span style="font-size: 15px">THỜI TRANG NAM NỮ</span>
                     </h1>
                 </div>
-                 <% if (session.getAttribute("admin") == null) { %>
+                 <% if (session.getAttribute("cus") == null) { %>
              <div id="login">
                     <!--<form name="frmTim" action="" method="get">
                         <input id="username" type="text" name="txt" placeholder="Account" required>
@@ -33,14 +37,17 @@
                         <button class="button" onclick="getInfo()">LOGIN</button>
                         <button class="button" onclick="signUp()">SIGN UP</button>
                      </form>-->
-                    <a style ="font-size: 18px;" href="Login.jsp">Login  |</a>
+                    <button ><a style ="font-size: 18px;" href="Login.jsp">Login</a></button>
                     
-                    <a style ="font-size: 18px;" href="SignUp.jsp">  Sign up</a>
+                    <button ><a style ="font-size: 18px;" href="SignUp.jsp">Sign up</a></button>
                 </div>
              <% } else {
-                Customer a = (Customer) session.getAttribute("admin");
+                Customer a = (Customer) session.getAttribute("cus");
             %>
-            <div id ="login"> <a href="LogoutServlet">Log out</a></div>
+            <div id ="login"> 
+                <a href="AccountDetail.jsp"><%=a.getAccount()%> |</a>
+                <a href="LogoutServlet">  Log out</a>
+            </div>
            
         
             
@@ -56,20 +63,20 @@
                     <li><a href="Home.jsp">Trang chủ</a></li>
                     <li><a href="#">Quần áo nữ</a>
                         <ul class="sub-menu">
-                            <li style="border:none"><a href="#">Áo thun</a></li>
-                            <li style="border:none"><a href="#">Áo Sơ mi</a></li>
-                            <li style="border:none"><a href="#">Quần tây</a></li>
-                            <li style="border:none"><a href="#">Quần jean</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=FT">Áo thun</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=FSM">Áo Sơ mi</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=FQ">Quần tây</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=FQ">Quần jean</a></li>
                             <li style="border:none"><a href="#">Giày dép</a></li>
                         </ul>
                     </li>                  
                     <li>
                         <a href="#">Quần áo nam</a>
                         <ul class="sub-menu">
-                            <li style="border:none"><a href="#">Áo thun</a></li>
-                            <li style="border:none"><a href="#">Áo Sơ mi</a></li>
-                            <li style="border:none"><a href="#">Quần tây</a></li>
-                            <li style="border:none"><a href="#">Quần jean</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=MT">Áo thun</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=MSM">Áo Sơ mi</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=MQ">Quần tây</a></li>
+                            <li style="border:none"><a href="ShowProducts.jsp?cat=MQ">Quần jean</a></li>
                             <li style="border:none"><a href="#">Giày dép</a></li>
                         </ul>
                     </li>                   
@@ -84,8 +91,8 @@
                     <li><a href="#">Tin tức sự kiện</a></li>
                     <li style="width:auto; border:none" >
                         <form name="frmTim" action="" method="get">
-                            <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" style = "width: 100px;" required>
-                            <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="window.location.href='ShowProducts.jsp'" >
+                            <input id="inp" type="text" name="txt" placeholder="Tên sản phẩm" style = "width: 100px;">
+                            <input type="image" src="Images/search.png" name="btnTim" style="position: relative; top: 7px" onclick="window.location.href='SearchProduct.jsp?key='+document.getElementById('inp')+'" >
                         </form>
                     </li>
                 </ul>
@@ -172,10 +179,41 @@
                 </div>
                 <div id="mainContent_4">
                     <div id="mainContent_4_title" class="radius">
-                        &loz; Thời trang nam
+                        &loz; Thời trang mới
                     </div>
                     <script src="Script/myScript.js" charset="UTF-8"></script>
-                    <div id="noichuaanh"></div>
+                    <div id="">
+                        <%
+                            DBProduct dbp = new DBProduct();
+                            ArrayList<Product> list = dbp.getAllProducts();
+                            Random rd = new Random();
+                            
+                        %>
+                        <table>
+                           <% 
+                               for(int i = 0; i < 2; i++) {
+                                   %>
+                                   <tr>
+                             <%
+                                 
+                                   for(int j = 0; j < 4; j++) {
+                                       int x = rd.nextInt(list.size());
+                                       
+                                %>
+                                
+                                <td><img src= "<%= list.get(x).getImage()%>" class = "hinh"/>
+                                 <h3 style="text-align: center;"><%=list.get(x).getName()%></h3>
+                                 
+                                 <p style="text-align: center;"><%=list.get(x).getPrice()%></p>
+                                </td>
+                               <%    }
+                               %>
+                               </tr>
+                               <%
+                               }
+                           %>
+                        </table>
+                    </div>
                 </div>
             </section>
             <!-- end content -->
@@ -186,7 +224,7 @@
         <!--footer-->
         <div id="footer">
             <div id="footer_content">
-                &COPY; 2009 All Rights Reserved &bull; Design by <a href="http://alphatek.edu.vn" target="_blank">Alphatek Company</a>
+                &COPY; 2009 All Rights Reserved &bull; Design by <a href="https://www.facebook.com/hailam.vu.52" target="_blank">Vũ Hải Lâm</a>
             </div>
             <div id="footer_icon">
                 <a href="https://www.facebook.com" target="_blank"><img src="Images/facebook.png"></a>

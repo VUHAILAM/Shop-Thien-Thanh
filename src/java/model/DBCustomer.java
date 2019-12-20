@@ -32,7 +32,7 @@ public class DBCustomer {
     
     public Customer getCustomer(String username, String password) {
         try {
-            String sql = "Select * from Customers where username=? and password=?";
+            String sql = "Select * from Customers where account=? and pass=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, username);
             st.setString(2, password);
@@ -55,7 +55,7 @@ public class DBCustomer {
     
     public boolean isExistedCus(String account) {
         try {
-            String sql = "SELECT count(*) FROM Customers where username = ?";
+            String sql = "SELECT count(*) FROM Customers where account = ?";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, account);
@@ -70,8 +70,8 @@ public class DBCustomer {
     public void insert(String username, String password,String fullname, 
             String email, String phone, String job, String other) {
         try {
-            String sql = "INSERT into dbo.Admin (account, pass, fullname,"
-                    + " email, phone, job, other) VALUES(?, ?, ?)";
+            String sql = "INSERT into dbo.Customers (account, pass, fullname,"
+                    + " email, phone, job, other) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement st = con.prepareStatement(sql);
             st.setString(1, username);
@@ -81,11 +81,20 @@ public class DBCustomer {
             st.setString(5, phone);
             st.setString(6, job);
             st.setString(7, other);
-            if (isExistedCus(username)) {
-                int flag = st.executeUpdate();
+            if (!isExistedCus(username)) {
+                 st.executeUpdate();
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBCustomer.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public int Update(String acc, String name, String email, String phone, String job, String other) throws SQLException {
+        String sql = "Update dbo.Customers set fullname = '"+name+"', email = '"+email+"', phone = '" +phone+ "', job = '"+job+"', other = '"+other+"' where account = '"+acc+"'";
+        PreparedStatement st = con.prepareStatement(sql);
+        int x = st.executeUpdate();
+        if(x!=0)
+            return x;
+        else return 0;
     }
 }
